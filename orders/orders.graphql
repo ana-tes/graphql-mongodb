@@ -1,0 +1,26 @@
+type Query {
+  orders: [Order]
+  getOrderById(_id: ID!): Order
+}
+
+type Mutation {
+  createOrder(items: [OrderInput]): Order!
+  deleteOrder(_id: ID!): Boolean!
+}
+
+type Order {
+  _id: ID!
+  date: String!
+  subtotal: Float!
+  items: [OrderItem]
+}
+
+input OrderInput {
+  productId: ID!
+  quantity: Int!
+}
+
+type OrderItem {
+  product: Product!
+  quantity: Int!
+}
